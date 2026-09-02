@@ -36,7 +36,7 @@ function validateUsername(username) {
           return "Too Short"
         } else if(username.includes(" ")) {
           return "No Space Allowed"
-        } else if(username.toLowercase().includes(admin)) {
+        } else if(username.toLowerCase().includes("admin")) {
           return "Reserved Word"
         } else {
           return "Available"
@@ -44,7 +44,7 @@ function validateUsername(username) {
 }
 
 
-function getCngFare(distace,isNight = false,waitingMinutes = 0) {
+function getCngFare(distance,isNight = false,waitingMinutes = 0) {
   let fare = 50;
   if(distance > 2){
     let extraDistance = distance - 2;
@@ -74,9 +74,9 @@ const getChaseVerdict = (target,scored,ballsLeft) => {
   if(requiredRate <= 6) {
     verdict = "Comfortable";
   } else if(requiredRate <= 12) {
-    verdict = "tough";
+    verdict = "Tough";
   } else {
-    verdict = "Almost Imposible";
+    verdict = "Almost Impossible";
   }
   
   return `Need ${runsNeeded} runs in ${ballsLeft} balls | ${verdict}`;
