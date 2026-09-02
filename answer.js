@@ -24,16 +24,16 @@ function getDayType(day) {
     case "tuesday":
     case "wednesday":
     case "thursday":
-      return "Working Day"
+      return "Working Day";
 
     default:
-      return "Invalid Day"
+      return "Invalid Day";
   }
 }
 
 function validateUsername(username) {
         if(username.length < 4) {
-          return "Too Short"
+          return "Too Short";
         } else if(username.includes(" ")) {
           return "No Space Allowed"
         } else if(username.toLowerCase().includes("admin")) {
@@ -65,7 +65,7 @@ const getChaseVerdict = (target,scored,ballsLeft) => {
   }
   
   if(ballsLeft <= 0) {
-    return "Lost"
+    return "Lost";
   }
   
   let requiredRate = (runsNeeded/ballsLeft)*6;
