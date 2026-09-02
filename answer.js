@@ -8,25 +8,76 @@ function describeValue(value) {
     truthStatus = "falsy";
   }
 
-  return `${type} | ${truthStatus};`
+  return `${type} | ${truthStatus}`;
 }
 
 function getDayType(day) {
-  let lowerDay = day.lowerCase();
+  let lowerDay = day.toLowerCase();
 
   switch(lowerDay) {
     case "friday":
-    case "Saturday":
+    case "saturday":
       return "Weekend";
 
-    case "sunday"
-    case "monday"
-    case "twesday"
-    case "wednesday"
-    case "thursday"
+    case "sunday":
+    case "monday":
+    case "tuesday":
+    case "wednesday":
+    case "thursday":
       return "Working Day"
 
     default:
       return "Invalid Day"
   }
 }
+
+function validateUsername(username) {
+        if(username.length < 4) {
+          return "Too Short"
+        } else if(username.includes(" ")) {
+          return "No Space Allowed"
+        } else if(username.toLowercase().includes(admin)) {
+          return "Reserved Word"
+        } else {
+          return "Available"
+        }
+}
+
+
+function getCngFare(distace,isNight = false,waitingMinutes = 0) {
+  let fare = 50;
+  if(distance > 2){
+    let extraDistance = distance - 2;
+    fare = fare + extraDistance*15;
+  }
+  fare = fare + waitingMinutes*2;
+  
+  if(isNight){
+    fare = fare*1.20;
+  }
+  return fare;
+}
+
+const getChaseVerdict = (target,scored,ballsLeft) => {
+  let runsNeeded = target - scored;
+  if(runsNeeded <= 0) {
+    return "Won";
+  }
+  
+  if(ballsLeft <= 0) {
+    return "Lost"
+  }
+  
+  let requiredRate = (runsNeeded/ballsLeft)*6;
+  let verdict;
+  
+  if(requiredRate <= 6) {
+    verdict = "Comfortable";
+  } else if(requiredRate <= 12) {
+    verdict = "tough";
+  } else {
+    verdict = "Almost Imposible";
+  }
+  
+  return `Need ${runsNeeded} runs in ${ballsLeft} balls | ${verdict}`;
+};
